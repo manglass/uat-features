@@ -1,0 +1,1 @@
+Feature: Pretty Url configuration
