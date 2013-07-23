@@ -32,25 +32,85 @@ Scenario: External LMS user registers to take course through onlineaha.org
 Scenario: External LMS user begins course
   Given I am an external LMS user
   And I have registered to access at least one DirectLink course
-  And I have 
-
-Scenario: External LMS user accesses learning resources via course home page
-
-Scenario: External LMS user accesses exercise access buttons via expandable headers
-
+  When I click to access my course
+  Then I should be on the course home page
+  And I should see a listing of exercises nested within expandable headers
+  
+Scenario: External LMS user uses expandable headers to navigate to exercise access buttons
+  Given I am an external LMS user
+  And I have registered to access at least one DirectLink course
+  And I click to access my course
+  And I am on the course home page
+  When I click on any available section headers
+  Then I should see a listing of section exercises expand out
+  And I should see titles, status, requirement and buttons to access exercise content
+  
 Scenario: External LMS user accesses course content via course player
+  Given I am an external LMS user
+  And I have registered to access at least one DirectLink course
+  And I click to access my course
+  And I am on the course home page
+  And I click on any available section headers
+  When I click on any available exercise access button
+  Then I should be linked to course content via the application's course player
 
-Scenario: External LMS user accesses course survey after 
+Scenario: External LMS user accesses learning resources via course home page resources module
+  Given I am an external LMS user
+  And I have registered to access at least one DirectLink course
+  And I click to access my course
+  And I am on the course home page
+  When I click on resource links in the resources module
+  Then I should be shown available learning resource content
 
+Scenario: External LMS user accesses learning resources via learning resources page
+  Given I am an external LMS user
+  And I have registered to access at least one DirectLink course
+  And I click to access my course
+  And I am on the course home page
+  When I click on the link to view all learning resources for the current course
+  Then I should be taken to the learning resources page
+  And I should have access to a full listing of all available links to course resources
+  And I should have a link back to the course home page
+
+Scenario: External LMS user accesses course evaluation after completing required exercises
+  Given I am an external LMS user
+  And I have registered to access at least one DirectLink course
+  And I click to access my course
+  And I am on the course home page
+  When I have completed all required exercises and tests available
+  Then I should have access to a course evaluation button
+  And I should be able to click on the button to access the course evaluation form
+  And I should be able to fill out the evaluation form
+  And I should be able to submit the form to return to the course homepage
+  
 Scenario: External LMS user accesses course completion certificate after completing course
+  Given I am an external LMS user
+  And I have registered to access at least one DirectLink course
+  And I click to access my course
+  And I am on the course home page
+  And I have completed all required exercises and tests available
+  And I have submitted any available course evaluation
+  When I click on the certificate button via the course status module
+  Then I should be presented with my course completion certificate as a download
 
 Scenario: External LMS user accesses CME credit after completing course
   Given I am an external LMS user
-  And I have access to at least one DirectLink course
-  And I have completed at least one DirectLink course
-# NOTE: Access is open and functional, but instructional text in progress
+  And I have registered to access at least one DirectLink course
+  And I click to access my course
+  And I am on the course home page
+  And I have completed all required exercises and tests available
+  And I have submitted any available course evaluation
+  When I click on the cme claim button via the course status module
+  Then I should be presented with the cme claim interface
+  And I should be able to submit my information
+  And I should be presented with my cme certificate as a download
 
 Scenario: OnlineAHA admin updates course detail text for course homepage
+  Given I am an onlineaha admin
+  And I have navigated to manage courses interface
+  When I click to edit an available course
+  Then I should be able to edit the course home description text
+  And I should be able to submit the form to update the course homepage description text
 
 Scenario: OnlineAHA admin resets course enrollment so user can take course again
 
