@@ -13,12 +13,18 @@ Feature: Direct Link User Experience
   So that my users can take courses and claim credit while all information is stored at onlineaha.org
 
   As an external LMS user
-  I want to have the option of calling customer service to reset my password
-  So that I may quickly and easily access my account after I have forgotten my password
+  I want to have full access to take course work via my native LMS
+  So that I may claim credit, access content and view progress status
 
   # Topics: Courses, External LMS, User Management
 
 ## Test Cases
+
+Scenario: External LMS admin uploads content into thier LMS
+  Given I am an external LMS administrator
+  And I have recived the proper SCORM package pointing to onlineaha
+  When I upload the package to my LMS course inventory
+  Then I should be able to allow access to the content to all permitted external LMS users
 
 Scenario: External LMS user registers to take course through onlineaha.org
   Given I am an external LMS user 
@@ -104,7 +110,16 @@ Scenario: External LMS user accesses CME credit after completing course
   Then I should be presented with the cme claim interface
   And I should be able to submit my information
   And I should be presented with my cme certificate as a download
-
+  
+Scenario: External LMS user sees the proper completion status passed to their course record via the external LMS
+  Given I am an external LMS user
+  And I have registered to access at least one DirectLink course
+  And I click to access my course
+  And I am on the course home page
+  When I experience different states of my course such as in progress, passed and failed
+  Then I should see these represented in the course status module on the course homepage
+  And I should see these represented in my native LMS progress indicator
+  
 Scenario: OnlineAHA admin updates course detail text for course homepage
   Given I am an onlineaha admin
   And I have navigated to manage courses interface
@@ -113,6 +128,17 @@ Scenario: OnlineAHA admin updates course detail text for course homepage
   And I should be able to submit the form to update the course homepage description text
 
 Scenario: OnlineAHA admin resets course enrollment so user can take course again
+  Given I am an onlineaha admin
+  And I have navigated to manage users interface
+  When I click on the expantion symbol for an available user 
+  And I click on the tab for learning content
+  Then I should be able to click the link to reset access to the course
+  And the user should be reenrolled in the course the next time they access it
+  
+Scenario: OnlineAHA admin accesses DirectLink usage report
+  Given I am an onlineaha admin
+  And I have navigated to the direct links key report interface
+  When I click on the download csv link for an available organization
+  Then I should have access to a report outlining all key activity for that organization
 
-Scenario: External LMS user sees the proper completion status passed to their course record via the external LMS
 
