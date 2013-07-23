@@ -21,13 +21,18 @@ Feature: Direct Link User Experience
 ## Test Cases
 
 Scenario: External LMS user registers to take course through onlineaha.org
-
-Scenario: 
+  Given I am an external LMS user 
+  And I have access to at least one DirectLink course via my LMS
+  When I click to access 
+  And I am presented with a registration page
+  Then my first and last name should be prefilled on the form
+  And I should be prompted to agree to Terms and Conditions
+  And I should be able to click a button complete registration
 
 Scenario: External LMS user begins course
   Given I am an external LMS user
-  And I have access to at least one DirectLink course
-# NOTE: Access is open and functional, but instructional text in progress
+  And I have registered to access at least one DirectLink course
+  And I have 
 
 Scenario: External LMS user accesses learning resources via course home page
 
