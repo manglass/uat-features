@@ -19,13 +19,35 @@ Feature: Direct Link User Experience
   # Topics: Courses, External LMS, User Management
 
 ## Test Cases
+
+Scenario: External LMS user registers to take course through onlineaha.org
+
+Scenario: 
+
 Scenario: External LMS user begins course
   Given I am an external LMS user
   And I have access to at least one DirectLink course
 # NOTE: Access is open and functional, but instructional text in progress
 
-Scenario: External LMS user accesses credit after completing course
+Scenario: External LMS user accesses learning resources via course home page
+
+Scenario: External LMS user accesses exercise access buttons via expandable headers
+
+Scenario: External LMS user accesses course content via course player
+
+Scenario: External LMS user accesses course survey after 
+
+Scenario: External LMS user accesses course completion certificate after completing course
+
+Scenario: External LMS user accesses CME credit after completing course
   Given I am an external LMS user
   And I have access to at least one DirectLink course
   And I have completed at least one DirectLink course
 # NOTE: Access is open and functional, but instructional text in progress
+
+Scenario: OnlineAHA admin updates course detail text for course homepage
+
+Scenario: OnlineAHA admin resets course enrollment so user can take course again
+
+Scenario: External LMS user sees the proper completion status passed to their course record via the external LMS
+
